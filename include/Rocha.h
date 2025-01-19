@@ -14,4 +14,7 @@ typedef struct{
 void Inicializa_Rocha(RochaMineral *rocha, Lista_minerais* lista_minerais, float peso, float latitud, float longitude);
 void ImprimeRocha(RochaMineral *rocha);
 void setCategoria(RochaMineral *rocha);
+void copia_Rocha(RochaMineral *rocha, Lista_minerais* lista_minerais,float peso, float latitud, float longitude,char* cat);
+int contem_mineral(Lista_minerais* lista,char* nome);
+
 #endif

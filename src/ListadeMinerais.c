@@ -26,7 +26,7 @@ int verifica_l_vazia(Lista_minerais* lista){
  */
 int insere_mineral(Lista_minerais* lista,Mineral item){
 
-        if(lista->prox_disponivel==MAX_MINERAIS){  //Se a lista estiver cheia a inserção não acontece.
+        if(lista->prox_disponivel==MAX_MINERAIS+1){  //Se a lista estiver cheia a inserção não acontece.
             printf("Lista cheia\n");
             return 0;
         }

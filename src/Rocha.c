@@ -16,7 +16,7 @@ void Inicializa_Rocha(RochaMineral *rocha, Lista_minerais* lista_minerais, float
     rocha->minerais=*lista_minerais;  
     
     setCategoria(rocha); 
-    printf("Rocha identificada: %s \n",rocha->categoria);
+    //printf("Rocha identificada: %s \n",rocha->categoria);
 }
 
 /**
@@ -27,6 +27,7 @@ void ImprimeRocha(RochaMineral *rocha) {
     printf("Categoria: %s\n", rocha->categoria);
     printf("Localização: (%.2f, %.2f)\n", rocha->latitude, rocha->longitude);
     imprime_lista_minerais(rocha->minerais);  
+    printf("\n");
 }
 
 
@@ -77,3 +78,31 @@ void setCategoria(RochaMineral *rocha) {
     }
 }
 
+/**
+ * @brief Recebe todas as informações de uma rocha e copia para uma outra variável. Funcionalidade utilizada para evitar a parda de atributos da rocha ao ser retirada de um compartimento.
+ */
+void copia_Rocha(RochaMineral *rocha, Lista_minerais* lista_minerais,float peso, float latitud, float longitude,char* cat) {
+
+                       
+    rocha->peso = peso;                   
+    rocha->latitude = latitud;           
+    rocha->longitude = longitude;         
+    strcpy(rocha->categoria,cat);
+    inicializa_lista_minerais(&rocha->minerais); 
+    for (int i=0;i<lista_minerais->prox_disponivel;i++){
+        insere_mineral(&rocha->minerais,lista_minerais->arranjo_minerais[i]);
+    }
+
+}
+
+int contem_mineral(Lista_minerais* lista,char* nome){
+    if (verifica_l_vazia(lista)) {
+        return 0;
+    }
+    for(int i = lista->primeiro; i < lista->prox_disponivel; i++) {
+        if(strcmp(lista->arranjo_minerais[i].nome, nome) == 0) {
+            return 1; 
+        }
+    }
+    return 0;
+}
