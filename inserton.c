@@ -16,7 +16,7 @@ void insertion_sort(ListadeRochas *vetor,int n){
     int trocas=0;
     ordena(n,vetor,&comparacoes,&trocas);
     for (int k=0;k<n;k++){
-        printf("%s %f\n",ListadeRochas,item.peso);
+        printf("%s %f\n",ListadeRochas,item.peso);//arrumar 
     }
     printf("Comparacoes: %d\n",comparacoes);
     printf("Movimentacoes: %d\n",trocas);
