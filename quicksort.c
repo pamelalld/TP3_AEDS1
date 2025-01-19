@@ -17,12 +17,13 @@ void particao(int esq, int dir, int *i,int *j, item *vetor, int *comparacoes, in
             vetor[*j]=aux;
 
             (*trocas)++;
+            (*trocas)++;
+            
             (*i)++;
             (*j)--;
         }
     } while (*i<= *j);
 }
-
 
 void ordena (int esq, int dir, item *vetor, int *comparacoes,int *trocas){
     int i,j;
@@ -31,8 +32,6 @@ void ordena (int esq, int dir, item *vetor, int *comparacoes,int *trocas){
     
     if (i<dir) {ordena(i,dir,vetor,comparacoes,trocas);}
 }
-
-
 
 void quicksort (item *vetor, int n){
     int comparacoes=0;
