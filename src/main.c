@@ -14,7 +14,7 @@ int main(){
     char nome_arquivo[Max_aqv];
     Arquivo arq;
     char arquivo[50] = "arquivos\\";
-    int qtd_rochas;
+    int qtd_rochas,algoritmo;
 
 
     printf("Digite o nome do arquivo:");
@@ -32,9 +32,21 @@ int main(){
         RochaMineral coleta = ler_rocha(&arq);
         copia_Rocha(&compartimento[i],&coleta.minerais,coleta.peso,coleta.latitude,coleta.longitude,coleta.categoria);
     }
+    printf("Qual algoritmo deseja utilizar\n1-Quicksort\n2-Insertionsort\n");
+    scanf("%d",&algoritmo);
+    switch (algoritmo)
+    {
+    case 1:
+        quicksort(compartimento,qtd_rochas);
+        break;
+    case 2:
+        //insertion(compartimento,qtd_rochas);
+        break;
     
-    quicksort(compartimento,qtd_rochas);
-
+    default:
+        printf("Opcao invalida!\n");
+        break;
+    }
     return 0;
 }
     
