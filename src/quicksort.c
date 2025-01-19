@@ -44,7 +44,7 @@ void quicksort (RochaMineral *vetor, int n){
     ordena(0,n-1,vetor,&comparacoes,&trocas);
 
     for (int k=0;k<n;k++){
-        printf("%s %f\n",vetor[k].categoria,vetor[k].peso);
+        printf("%s %.1f\n",vetor[k].categoria,vetor[k].peso);
     }
     printf("Comparacoes: %d\n",comparacoes);
     printf("Movimentacoes: %d\n",trocas);
