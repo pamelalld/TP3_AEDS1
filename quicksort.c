@@ -44,5 +44,6 @@ void quicksort (item *vetor, int n){
     }
     printf("Comparacoes: %d\n",comparacoes);
     printf("Movimentacoes: %d\n",trocas);
+    printf("Algoritmo: Quicksort");
 
 }
