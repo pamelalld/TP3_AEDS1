@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include "Rocha.h"
 
-#define Max_tam 1000
+#define Max_tam 10000
 #define tam_inicial 0
 
 typedef struct lista_rochas {
