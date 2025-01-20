@@ -3,7 +3,7 @@
 #include <string.h>
 #include "../include/Rocha.h"
 #include "../include/Arquivo.h"
-#include "../include/quicksort.h"
+#include "../include/Compartimento.h"
 
 #define Max_aqv 100
 #define Max_linha 255
