@@ -56,7 +56,7 @@ void ordena_insertion(int n,lista_rochas *vetor,int *comp,int *trocas){
 void insertion_sort(lista_rochas *vetor,int n){
     int comparacoes=0;
     int trocas=0;
-    ordena(n,vetor,&comparacoes,&trocas);
+    ordena_insertion(n,vetor,&comparacoes,&trocas);
     for (int k=0;k<n;k++){
         printf("%s %.2f\n",vetor[k].arranjo_rochas->categoria,vetor[k].arranjo_rochas->peso);//arrumar 
     }
@@ -96,15 +96,15 @@ void particao(int esq, int dir, int *i,int *j, RochaMineral *vetor, int *compara
 void ordena_quick(int esq, int dir, RochaMineral *vetor, int *comparacoes,int *trocas){
     int i,j;
     particao(esq,dir,&i,&j,vetor,comparacoes,trocas);
-    if (esq<j) {ordena(esq,j,vetor,comparacoes,trocas);}
+    if (esq<j) {ordena_quick(esq,j,vetor,comparacoes,trocas);}
     
-    if (i<dir) {ordena(i,dir,vetor,comparacoes,trocas);}
+    if (i<dir) {ordena_quick(i,dir,vetor,comparacoes,trocas);}
 }
 
 void quicksort (RochaMineral *vetor, int n){
     int comparacoes=0;
     int trocas=0;
-    ordena(0,n-1,vetor,&comparacoes,&trocas);
+    ordena_quick(0,n-1,vetor,&comparacoes,&trocas);
 
     for (int k=0;k<n;k++){
         printf("%s %.1f\n",vetor[k].categoria,vetor[k].peso);
