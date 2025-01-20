@@ -17,8 +17,8 @@ void exibe_compartimento(lista_rochas* lista);
 int insere_nova_rocha(lista_rochas* lista, RochaMineral nova_rocha);
 void insertion_sort(lista_rochas *vetor,int n);
 void ordena_insertion(int n,lista_rochas *vetor,int *comp,int *trocas);
-void particao(int esq, int dir, int *i,int *j, RochaMineral *vetor, int *comparacoes, int *trocas);
-void ordena_quick(int esq, int dir, RochaMineral *vetor, int *comparacoes,int *trocas);
-void quicksort (RochaMineral *vetor, int n);
+void particao(int esq, int dir, int *i,int *j, lista_rochas *vetor, int *comparacoes, int *trocas);
+void ordena_quick(int esq, int dir, lista_rochas *vetor, int *comparacoes,int *trocas);
+void quicksort (lista_rochas *vetor, int n);
 
 #endif
