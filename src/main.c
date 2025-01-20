@@ -22,6 +22,7 @@ int menu(){
     Arquivo arq;
     char arquivo[50] = "arquivos\\";
     int qtd_rochas,algoritmo;
+    lista_rochas compartimento;
 
 
     printf("Digite o nome do arquivo:");
@@ -33,22 +34,23 @@ int menu(){
     qtd_rochas=qtdoperacao(&arq);
 
 
-    RochaMineral compartimento[qtd_rochas];
+    inicializa_compartimento(&compartimento);
 
     for (int i=0;i<qtd_rochas;i++){
         RochaMineral coleta = ler_rocha(&arq);
-        copia_Rocha(&compartimento[i],&coleta.minerais,coleta.peso,coleta.latitude,coleta.longitude,coleta.categoria);
+        insere_nova_rocha(&compartimento,coleta);
     }
+    //exibe_compartimento(&compartimento);
     
     printf("======Selecione o algoritmo que deseja utilizar======\n1-Quicksort\n2-Insertionsort\n3-Sair\n");
     scanf("%d",&algoritmo);
     switch (algoritmo)
     {
     case 1:
-        quicksort(compartimento,qtd_rochas);
+        quicksort(&compartimento,qtd_rochas);
         break;
     case 2:
-        insertion_sort(compartimento,qtd_rochas);
+        insertion_sort(&compartimento,qtd_rochas);
         break;
     case 3:
         printf("Execução finalizada\n");
