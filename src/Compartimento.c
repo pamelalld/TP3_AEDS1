@@ -50,6 +50,7 @@ void ordena_insertion(int n,lista_rochas *vetor,int *comp,int *trocas){
         }
         // Insere o tmp na posição correta
         copia_Rocha(&vetor->arranjo_rochas[j + 1],&tmp.minerais, tmp.peso, tmp.latitude, tmp.longitude, tmp.categoria);
+        (*trocas)++; // Incrementa o contador de trocas
     }
         
 }
