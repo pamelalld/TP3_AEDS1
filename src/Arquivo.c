@@ -90,3 +90,4 @@ RochaMineral ler_rocha(Arquivo *arquivo){
     
     return coleta;
 }
+

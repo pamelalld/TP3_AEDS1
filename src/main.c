@@ -20,7 +20,7 @@
 int menu(){
     char nome_arquivo[Max_aqv];
     Arquivo arq;
-    char arquivo[50] = "arquivos\\";
+    char arquivo[50] = "arquivos/";
     int qtd_rochas,algoritmo;
     lista_rochas compartimento;
 
@@ -34,11 +34,11 @@ int menu(){
     qtd_rochas=qtdoperacao(&arq);
 
 
-    inicializa_compartimento(&compartimento);
+    inicializa_compartimento(&compartimento,qtd_rochas);
 
     for (int i=0;i<qtd_rochas;i++){
         RochaMineral coleta = ler_rocha(&arq);
-        insere_nova_rocha(&compartimento,coleta);
+        insere_nova_rocha(&compartimento,coleta,qtd_rochas);
     }
     //exibe_compartimento(&compartimento);
     
