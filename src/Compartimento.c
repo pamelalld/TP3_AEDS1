@@ -100,7 +100,7 @@ void particao(int esq, int dir, int *i,int *j, lista_rochas *vetor, int *compara
     RochaMineral pivo, aux;
     Inicializa_Rocha(&aux,&vetor->arranjo_rochas[0].minerais,vetor->arranjo_rochas[0].peso,vetor->arranjo_rochas[0].latitude,vetor->arranjo_rochas[0].longitude);
     *i = esq; *j = dir;
-    pivo = vetor->arranjo_rochas[esq]; 
+    pivo = vetor->arranjo_rochas[(*i + *j) / 2]; 
     do{
         while (pivo.peso > vetor->arranjo_rochas[*i].peso){
             (*i)++;
