@@ -2,6 +2,9 @@
 #include <stdlib.h>
 #include "../include/Compartimento.h"
 
+/**
+ * @brief Faz a inicialização do compartimento, uma lista vetorial de tamanho max_tam.
+ */
 void inicializa_compartimento(lista_rochas* lista,int max_tam){
     
     lista->primeiro=TAM_INICIAL;
@@ -10,7 +13,9 @@ void inicializa_compartimento(lista_rochas* lista,int max_tam){
     lista->Max_tam=max_tam;
 
 }
-
+/**
+ * @brief exibe as informações das rochas contidas no compartimento.
+ */
 void exibe_compartimento(lista_rochas* lista){
     for(int i=0;i<lista->prox_disponivel;i++){
         printf("Categoria: %s- ",lista->arranjo_rochas[i].categoria);
@@ -19,7 +24,9 @@ void exibe_compartimento(lista_rochas* lista){
     }
     
 }
-
+/**
+ * @brief Faz a inserção de uma nova rocha no final do vetor compartimento.
+ */
 int insere_nova_rocha(lista_rochas* lista,RochaMineral nova_rocha,int max_tam){ 
         
         if(lista->prox_disponivel==max_tam){
@@ -34,7 +41,9 @@ int insere_nova_rocha(lista_rochas* lista,RochaMineral nova_rocha,int max_tam){
         return 1;
 
 }
-
+/**
+ * @brief Uma das funções necessárias para o funcionamento do método de ordenação Insertionsort.
+ */
 void ordena_insertion(int n,lista_rochas *vetor,int *comp,int *trocas){
     int i,j;
     RochaMineral tmp;
@@ -60,19 +69,25 @@ void ordena_insertion(int n,lista_rochas *vetor,int *comp,int *trocas){
 
     }   
 }
+
+/**
+ * @brief Função principal do método Insertionsort, faz a chamada recursiva da função ordena_insertion.
+ */
 void insertion_sort(lista_rochas *vetor,int n){
     int comparacoes=0;
     int trocas=0;
     ordena_insertion(n,vetor,&comparacoes,&trocas);
-    /*for (int k=0;k<n;k++){
-        printf("%s %.2f\n",vetor->arranjo_rochas[k].categoria,vetor->arranjo_rochas[k].peso);//arrumar 
-    }*/
+    
+    exibe_compartimento(vetor);
+
     printf("\nComparacoes: %d\n",comparacoes);
     printf("Movimentacoes: %d\n",trocas);
     printf("Algoritmo: Insertion sort\n");
 }
 
-
+/**
+ * @brief Funcionalidade essencial para método de ordenação quicksort, faz a divisão e organização de partições, favorecendo o processo de ordenação.
+ */
 void particao(int esq, int dir, int *i,int *j, lista_rochas *vetor, int *comparacoes, int *trocas){
     RochaMineral pivo, aux;
     Inicializa_Rocha(&aux,&vetor->arranjo_rochas[0].minerais,vetor->arranjo_rochas[0].peso,vetor->arranjo_rochas[0].latitude,vetor->arranjo_rochas[0].longitude);
@@ -99,7 +114,9 @@ void particao(int esq, int dir, int *i,int *j, lista_rochas *vetor, int *compara
         }
     } while (*i<= *j);
 }
-
+/**
+ * @brief Organiza a posição dos elementos no vetor a partir de chamada recursiva da função particao.
+ */
 void ordena_quick(int esq, int dir, lista_rochas *vetor, int *comparacoes,int *trocas){
     int i,j;
     particao(esq,dir,&i,&j,vetor,comparacoes,trocas);
@@ -108,14 +125,16 @@ void ordena_quick(int esq, int dir, lista_rochas *vetor, int *comparacoes,int *t
     if (i<dir) {ordena_quick(i,dir,vetor,comparacoes,trocas);}
 }
 
+/**
+ * @brief Função principal do método Quicksort.
+ */
 void quicksort (lista_rochas *vetor, int n){
     int comparacoes=0;
     int trocas=0;
     ordena_quick(0,n-1,vetor,&comparacoes,&trocas);
 
-    /*for (int k=0;k<n;k++){
-        printf("%s %.1f\n",vetor->arranjo_rochas[k].categoria,vetor->arranjo_rochas[k].peso);
-    }*/
+    exibe_compartimento(vetor);
+
     printf("\nComparacoes: %d\n",comparacoes);
     printf("Movimentacoes: %d\n",trocas);
     printf("Algoritmo: Quicksort\n");

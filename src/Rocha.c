@@ -93,7 +93,9 @@ void copia_Rocha(RochaMineral *rocha, Lista_minerais* lista_minerais,float peso,
         insere_mineral(&rocha->minerais,lista_minerais->arranjo_minerais[i]);
     }
 
-}
+}/**
+ * @brief Verifica a presença de um mineral em uma lista de minerais.
+ */
 
 int contem_mineral(Lista_minerais* lista,char* nome){
     if (verifica_l_vazia(lista)) {

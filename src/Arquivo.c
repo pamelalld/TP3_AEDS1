@@ -23,8 +23,14 @@ void abrearquivo(char *nomeArquivo, Arquivo* arquivo){
 void fechaArquivo(Arquivo *arquivo){
     fclose(arquivo->Arquivo);
 }
-
+/**
+ * @brief lê do arquivo um número que representa a quantidade de rochas presentes no array. 
+ */
 int qtdoperacao(Arquivo *arquivo){
+    if (arquivo->Arquivo == NULL) {
+        fprintf(stderr, "O arquivo não está aberto\n");
+        exit(EXIT_FAILURE);
+    }
     int n;
     fscanf((arquivo->Arquivo),"%d",&n);
     fgetc(arquivo->Arquivo);
@@ -43,17 +49,32 @@ RochaMineral ler_rocha(Arquivo *arquivo){
     float lat_r,lon_r,peso;  
     RochaMineral coleta;
     
-    fgets(linha,Max_linha,arquivo->Arquivo);
-    //printf("Linha: %s", linha);   
+    if (fgets(linha, Max_linha, arquivo->Arquivo) == NULL) {
+        printf("Erro ao ler linha do arquivo.\n");
+        exit(EXIT_FAILURE);
+    }   
     
     char*buffer =NULL;
     const char delim[2]= " ";
     buffer = strtok(linha,delim);
+    if (buffer == NULL) {
+        printf("Erro ao ler latitude.\n");
+        exit(EXIT_FAILURE);
+    }
     lat_r=atof(buffer);
     
     buffer = strtok(NULL,delim);
+    if (buffer == NULL) {
+        printf("Erro ao ler longitude.\n");
+        exit(EXIT_FAILURE);
+    }
     lon_r=atof(buffer);
+    
     buffer= strtok(NULL,delim);
+    if (buffer == NULL) {
+        fprintf(stderr, "Erro ao ler peso.\n");
+        exit(EXIT_FAILURE);
+    }
     peso = atof(buffer);
     
     int i=0;

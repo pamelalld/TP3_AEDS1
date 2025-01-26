@@ -3,7 +3,9 @@
 #include <string.h>
 
 
-
+/**
+ * @brief Inicializa um TAD mineral, atribuindo seu nome.
+ */
 void inicializa_mineral(Mineral* mineral,char *nome){
     strcpy(mineral->nome,nome);
 }
