@@ -18,8 +18,10 @@
 #define Max_minerais 3
 
 int menu(){
+
     char nome_arquivo[Max_aqv];
     Arquivo arq;
+    arq.Arquivo=NULL;
     char arquivo[50] = "arquivos/";
     int qtd_rochas,algoritmo;
     lista_rochas compartimento;
@@ -40,7 +42,6 @@ int menu(){
         RochaMineral coleta = ler_rocha(&arq);
         insere_nova_rocha(&compartimento,coleta,qtd_rochas);
     }
-    //exibe_compartimento(&compartimento);
     
     printf("======Selecione o algoritmo que deseja utilizar======\n1-Quicksort\n2-Insertionsort\n3-Sair\n");
     scanf("%d",&algoritmo);
@@ -48,9 +49,11 @@ int menu(){
     {
     case 1:
         quicksort(&compartimento,qtd_rochas);
+        fechaArquivo(&arq);
         break;
     case 2:
         insertion_sort(&compartimento,qtd_rochas);
+        fechaArquivo(&arq);
         break;
     case 3:
         printf("Execução finalizada\n");
@@ -63,14 +66,15 @@ int menu(){
         return 1;
         break;
     }
-    // Fecha o arquivo após executar as operações
-    fechaArquivo(&arq);
     return 0;
-
 }
 int main(){
     int chave = 1;
-    #if defined(_WIN32) || defined(_WIN64)
+
+     while(chave){
+        chave = menu();
+    }
+    /*#if defined(_WIN32) || defined(_WIN64)
 
     LARGE_INTEGER inicio, fim, frequency;
     double decorrido;
@@ -111,7 +115,7 @@ int main(){
 
     // Imprime o resultado
     printf("Tempo de execução: %ld.%09lds\n", segundos, nanosegundos);
-    #endif
+    #endif*/
 
     return 0;
 }

@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 #include "../include/Compartimento.h"
 
 /**
@@ -76,12 +77,19 @@ void ordena_insertion(int n,lista_rochas *vetor,int *comp,int *trocas){
 void insertion_sort(lista_rochas *vetor,int n){
     int comparacoes=0;
     int trocas=0;
+    clock_t ti, tf;
+    
+    ti= clock ();
     ordena_insertion(n,vetor,&comparacoes,&trocas);
+    
+    tf =clock ()-ti;
     
     exibe_compartimento(vetor);
 
     printf("\nComparacoes: %d\n",comparacoes);
     printf("Movimentacoes: %d\n",trocas);
+    printf("Tempo de execução %.2lf segundos\n",(double)tf/CLOCKS_PER_SEC);
+
     printf("Algoritmo: Insertion sort\n");
 }
 
@@ -131,12 +139,19 @@ void ordena_quick(int esq, int dir, lista_rochas *vetor, int *comparacoes,int *t
 void quicksort (lista_rochas *vetor, int n){
     int comparacoes=0;
     int trocas=0;
+    clock_t ti, tf;
+
+    ti= clock ();
+
     ordena_quick(0,n-1,vetor,&comparacoes,&trocas);
 
+    tf =clock ()-ti;
+    
     exibe_compartimento(vetor);
 
     printf("\nComparacoes: %d\n",comparacoes);
     printf("Movimentacoes: %d\n",trocas);
+    printf("Tempo de execução %.2lf segundos\n",(double)tf/CLOCKS_PER_SEC);
     printf("Algoritmo: Quicksort\n");
 
 }
