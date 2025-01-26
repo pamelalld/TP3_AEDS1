@@ -20,7 +20,7 @@
 int menu(){
     char nome_arquivo[Max_aqv];
     Arquivo arq;
-    char arquivo[50] = "arquivos\\";
+    char arquivo[50] = "arquivos/";
     int qtd_rochas,algoritmo;
     lista_rochas compartimento;
 
@@ -47,10 +47,15 @@ int menu(){
     switch (algoritmo)
     {
     case 1:
+    
         quicksort(&compartimento,qtd_rochas);
+        
         break;
     case 2:
+        
         insertion_sort(&compartimento,qtd_rochas);
+        
+
         break;
     case 3:
         printf("Execução finalizada\n");
