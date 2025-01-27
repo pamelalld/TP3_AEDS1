@@ -34,6 +34,7 @@ int insere_mineral(Lista_minerais* lista,Mineral item){
             lista->arranjo_minerais[lista->prox_disponivel]=item;
             lista->prox_disponivel++; //Atualiza a proxima posicao disponivel.
         }
+        return 1;
     }
 
 /**
