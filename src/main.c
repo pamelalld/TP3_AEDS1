@@ -41,10 +41,12 @@ int menu(){
     switch (algoritmo)
     {
     case 1:
+    
         quicksort(&compartimento,qtd_rochas);
         fechaArquivo(&arq);
         break;
     case 2:
+        
         insertion_sort(&compartimento,qtd_rochas);
         fechaArquivo(&arq);
         break;
