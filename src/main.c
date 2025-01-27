@@ -1,13 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <time.h>
-#if defined(_WIN32) || defined(_WIN64)
-    #include <windows.h>
- #else
-    #include<unistd.h>
-
-#endif
 
 #include "../include/Rocha.h"
 #include "../include/Arquivo.h"
@@ -76,48 +69,6 @@ int main(){
      while(chave){
         chave = menu();
     }
-    /*#if defined(_WIN32) || defined(_WIN64)
-
-    LARGE_INTEGER inicio, fim, frequency;
-    double decorrido;
-
-    QueryPerformanceFrequency(&frequency);
-    QueryPerformanceCounter(&inicio);
-    #else
-        struct timespec inicio, fim;
-        // Marca o tempo de início
-        clock_gettime(CLOCK_MONOTONIC, &inicio);
-
-    #endif
-    while(chave){
-        // Captura o tempo inicial
-        chave = menu();
-    }
-    #if defined(_WIN32) || defined(_WIN64)
-
-    // Captura o tempo final
-    QueryPerformanceCounter(&fim);
-     // Calcula o tempo total do programa
-    decorrido = (fim.QuadPart - inicio.QuadPart)/frequency.QuadPart;
-    printf("Tempo total gasto: %.2f segundos\n", decorrido);
-    printf("Programa encerrado.\n");
-    #else
-    // Marca o tempo de fim
-    clock_gettime(CLOCK_MONOTONIC, &fim);
-
-    // Calcula a diferença em nanossegundos
-    long segundos = fim.tv_sec - inicio.tv_sec;
-    long nanosegundos = fim.tv_nsec - inicio.tv_nsec;
-
-    // Ajusta caso haja underflow nos nanossegundos
-    if (nanosegundos < 0) {
-        segundos--;
-        nanosegundos += 1000000000;
-    }
-
-    // Imprime o resultado
-    printf("Tempo de execução: %ld.%09lds\n", segundos, nanosegundos);
-    #endif*/
 
     return 0;
 }
